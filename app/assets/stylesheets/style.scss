@@ -1,0 +1,6 @@
+.category-manage {
+  display: none;
+}
+.category-list-item:hover > .category-manage {
+  display: inline-block;
+}

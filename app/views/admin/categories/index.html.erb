@@ -9,46 +9,16 @@
       </div>
     </form>
     <ul class="list-group">
-      <li class="category-list-item list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-        Cras justo odio
+      <% @categories.each do |category| %>
+        <li class="category-list-item list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+          <%= category.name %>
 
-        <span class="category-manage">
-          <a class="badge badge-info"><%= fa_icon "file-text-o"%></a> 
-          <a class="badge badge-danger"><%= fa_icon "trash-o"%></a> 
-        </span>
-      </li>
-      <li class="category-list-item list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-        Cras justo odio
-
-        <span class="category-manage">
-          <a class="badge badge-info"><%= fa_icon "file-text-o"%></a> 
-          <a class="badge badge-danger"><%= fa_icon "trash-o"%></a> 
-        </span>
-      </li>
-      <li class="category-list-item list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-        Cras justo odio
-
-        <span class="category-manage">
-          <a class="badge badge-info"><%= fa_icon "file-text-o"%></a> 
-          <a class="badge badge-danger"><%= fa_icon "trash-o"%></a> 
-        </span>
-      </li>
-      <li class="category-list-item list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-        Cras justo odio
-
-        <span class="category-manage">
-          <a class="badge badge-info"><%= fa_icon "file-text-o"%></a> 
-          <a class="badge badge-danger"><%= fa_icon "trash-o"%></a> 
-        </span>
-      </li>
-      <li class="category-list-item list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-        Cras justo odio
-
-        <span class="category-manage">
-          <a class="badge badge-info"><%= fa_icon "file-text-o"%></a> 
-          <a class="badge badge-danger"><%= fa_icon "trash-o"%></a> 
-        </span>
-      </li>
+          <span class="category-manage">
+            <a class="badge badge-info"><%= fa_icon "file-text-o"%></a> 
+            <a class="badge badge-danger"><%= fa_icon "trash-o"%></a> 
+          </span>
+        </li>
+      <%end%>  
     </ul>
   </div>
 </div>

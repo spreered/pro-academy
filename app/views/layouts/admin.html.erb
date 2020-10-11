@@ -17,22 +17,19 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li> <%=link_to 'Courses', admin_courses_path, class: 'nav-link'%></li>
+          <li> <%=link_to 'Catagories', admin_categories_path, class: 'nav-link'%></li>
+        </ul>
         <ul class="navbar-nav ml-auto">
           <% if user_signed_in? %>
             <li><span class="navbar-text">  <%=current_user.email%>  </span></li>
             <li><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-link' %></li>
-          <% else %>
-            <li class="nav-item active">
-              <%= link_to 'Sign up', new_user_registration_path, class: 'nav-link' %>
-            </li>
-            <li class="nav-item active">
-              <%= link_to 'Sign In', new_user_session_path, class: 'nav-link' %>
-            </li>
           <% end%>
         </ul>
       </div>
     </nav>    
-    <div class="container-fluid">
+    <div class="container-fluid main">
     <% if flash[:notice] %>
       <div class="alert alert-success alert-dismissible mt-3" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><%= notice %>

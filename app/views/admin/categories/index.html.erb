@@ -1,0 +1,12 @@
+<div class="row justify-content-center mt-4">
+  <div class="col-lg-6">
+    <div class="category-new mb-3">
+      <%= render 'form', category: @new_category %>
+    </div>
+    <ul class="list-group">
+      <% @categories.each do |category| %>
+        <%= render 'item', category: category %>
+      <%end%>  
+    </ul>
+  </div>
+</div>

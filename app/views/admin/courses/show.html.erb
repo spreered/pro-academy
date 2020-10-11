@@ -1,0 +1,41 @@
+<div class="row justify-content-center mt-3">
+  <div class="col-6">
+    <button class="btn btn-primary btn-sm">edit</button>
+    <button class="btn btn-danger btn-sm">remove</button>
+    <table class="table mt-2">
+      <tbody>
+        <tr>
+          <th scope="row">ID</td>
+          <td><%= @course.id %></td>
+        </tr>
+        <tr>
+          <th scope="row">Title</td>
+          <td><%= @course.title %></td>
+        </tr>
+        <tr>
+          <th scope="row">Category</td>
+          <td><%= @course.category.name %></td>
+        </tr>
+        <tr>
+          <th scope="row">Created at</td>
+          <td><%= @course.created_at%></td>
+        </tr>
+        <tr>
+          <th scope="row">Status</td>
+          <td><%= @course.status %></td>
+        </tr>
+        <tr>
+          <th scope="row">Slug</td>
+          <td><%= @course.slug %></td>
+        </tr>
+        <tr>
+          <th scope="row">URL</td>
+          <td><%= @course_root_url + @course.slug %></td>
+        </tr>
+        <tr>
+          <th scope="row">Duration</td>
+          <td><%= @course.duration %></td>
+        </tr>
+      </tbody> 
+    </table></div>
+</div>

@@ -15,7 +15,7 @@
       <% @courses.each do |course| %>
         <tr>
           <td><%= course.id %></td>
-          <td><%= course.title %></td>
+          <td><%=link_to course.title, admin_course_path(course) %></td>
           <td><%= course.category.name %></td>
           <td><%= course.status %></td>
           <td>

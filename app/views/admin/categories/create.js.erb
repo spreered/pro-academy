@@ -1,0 +1,6 @@
+<% if flash[:alert].present? %>
+  $('.main').append("<%= j(render 'shared/alert') %>")
+<% else %>
+  $('#category-form')[0].reset()
+  $('.list-group').append("<%= j(render 'item', category: @category)%>")
+<%end%>

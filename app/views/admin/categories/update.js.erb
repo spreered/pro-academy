@@ -1,0 +1,5 @@
+<% if flash[:alert].present? %>
+  $(".main").append("<%= j(render 'shared/alert') %>")
+<% else %>
+  $("[data-id='<%= @category.id %>']").replaceWith("<%= j(render 'item', category: @category)%>")
+<%end%>

@@ -2,7 +2,10 @@
   <%= category.name %>
 
   <span class="category-manage">
-    <a class="badge badge-info"><%= fa_icon "file-text-o"%></a> 
+    <!-- <a class="badge badge&#45;info"><%= fa_icon "file&#45;text&#45;o"%></a>  -->
+    <%= link_to edit_admin_category_path(category), class:'badge badge-info', remote: true do%>
+      <%= fa_icon 'file-text-o'%>
+    <%end%>
     <%= link_to admin_category_path(category), method: :delete, class:'badge badge-danger', remote: true do%>
       <%= fa_icon 'trash-o'%>
     <% end %> 

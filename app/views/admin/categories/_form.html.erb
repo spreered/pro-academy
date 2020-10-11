@@ -1,0 +1,8 @@
+<%= form_with model: [:admin, category], class: 'category-form' do |f| %>
+  <div class="input-group">
+    <%=f.text_field :name, class: 'form-control', placeholder: 'Create Category'%>
+    <div class="input-group-append">
+      <%=f.submit "Submit", class: 'btn btn-secondary'%>
+    </div>
+  </div>
+<%end%>

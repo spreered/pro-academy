@@ -1,8 +1,10 @@
-<li class="category-list-item list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+<li class="category-list-item list-group-item list-group-item-action d-flex justify-content-between align-items-center" data-id="<%=category.id%>">
   <%= category.name %>
 
   <span class="category-manage">
     <a class="badge badge-info"><%= fa_icon "file-text-o"%></a> 
-    <a class="badge badge-danger"><%= fa_icon "trash-o"%></a> 
+    <%= link_to admin_category_path(category), method: :delete, class:'badge badge-danger', remote: true do%>
+      <%= fa_icon 'trash-o'%>
+    <% end %> 
   </span>
 </li>

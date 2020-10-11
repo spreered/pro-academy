@@ -1,3 +1,31 @@
-<h1>
-  this is admin page index
-</h1>
+<h1 class="mt-5">Courses Management</h1>
+<div class="mt-3">
+  <button class="btn btn-info"> new course</button>
+  <table class="table mt-2">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Title</th>
+        <th scope="col">Category</th>
+        <th scope="col">Status</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @courses.each do |course| %>
+        <tr>
+          <td><%= course.id %></td>
+          <td><%= course.title %></td>
+          <td><%= course.category.name %></td>
+          <td><%= course.status %></td>
+          <td>
+            <span class="course-manage">
+              <a class="badge badge-info"><%= fa_icon "file-text-o"%></a> 
+              <a class="badge badge-danger"><%= fa_icon "trash-o"%></a> 
+            </span>
+          </td>
+        </tr>
+      <% end %>
+    </tbody> 
+  </table>
+</div>

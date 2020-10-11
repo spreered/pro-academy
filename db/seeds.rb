@@ -1,10 +1,20 @@
-User.find_or_create_by( email: "admin@pro-academy.com") do |user|
+User.create( email: "admin@pro-academy.com") do |user|
   user.password = "12345678"
   user.role = :admin 
 end
 
-Category.find_or_create_by(name: 'Development')
-Category.find_or_create_by(name: 'Business')
-Category.find_or_create_by(name: 'Finance')
-Category.find_or_create_by(name: 'Design')
-Category.find_or_create_by(name: 'Marketing')
+Category.create(name: 'Development')
+Category.create(name: 'Business')
+Category.create(name: 'Finance')
+Category.create(name: 'Design')
+Category.create(name: 'Marketing')
+
+Category.all.each do |category|
+  5.times do |i|
+    category.courses.create(
+      title: "#{category.name} #{i}",
+      status: :launched,
+      slug: "#{category.name.downcase}-#{i}",
+    )
+  end
+end

@@ -1,0 +1,49 @@
+<div class="row justify-content-center mt-3">
+  <div class="col-6">
+    <%= link_to edit_admin_course_path(@course), class: 'btn btn-primary btn-sm' do %>
+      <%= fa_icon "file-text-o"%>
+    <% end%>
+    <%= link_to admin_course_path(@course), method: :delete, class: 'btn btn-danger btn-sm', data: {confirm: "Deleting course #{@course.title}, are your sure?"} do %>
+      <%= fa_icon "trash-o"%>
+    <% end%>
+    <table class="table mt-2">
+      <tbody>
+        <tr>
+          <th scope="row">ID</td>
+          <td><%= @course.id %></td>
+        </tr>
+        <tr>
+          <th scope="row">Title</td>
+          <td><%= @course.title %></td>
+        </tr>
+        <tr>
+          <th scope="row">Category</td>
+          <td><%= @course.category.name %></td>
+        </tr>
+        <tr>
+          <th scope="row">Created at</td>
+          <td><%= @course.created_at%></td>
+        </tr>
+        <tr>
+          <th scope="row">Status</td>
+          <td><%= @course.status %></td>
+        </tr>
+        <tr>
+          <th scope="row">Slug</td>
+          <td><%= @course.slug %></td>
+        </tr>
+        <tr>
+          <th scope="row">URL</td>
+          <td><%= @course_root_url + @course.slug %></td>
+        </tr>
+        <tr>
+          <th scope="row">Duration</td>
+          <td><%= @course.duration %></td>
+        </tr>
+        <tr>
+          <th scope="row">Description</td>
+          <td><pre><%= @course.description %></pre></td>
+        </tr>
+      </tbody> 
+    </table></div>
+</div>

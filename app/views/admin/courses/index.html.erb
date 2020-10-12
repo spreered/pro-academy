@@ -1,3 +1,37 @@
-<h1>
-  this is admin page index
-</h1>
+<h1 class="mt-5">Courses Management</h1>
+<div class="mt-3">
+  <%= link_to "new course", new_admin_course_path, class: 'btn btn-primary btn-sm'%>
+  <table class="table mt-2">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Title</th>
+        <th scope="col">Category</th>
+        <th scope="col">Status</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @courses.each do |course| %>
+        <tr>
+          <td><%= course.id %></td>
+          <td><%=link_to course.title, admin_course_path(course) %></td>
+          <td><%= course.category.name %></td>
+          <td><%= course.status %></td>
+          <td>
+            <span class="course-manage">
+              <%= link_to edit_admin_course_path(course), class: 'badge badge-info' do %>
+                <%= fa_icon "file-text-o"%>
+              <% end%>
+              <%= link_to admin_course_path(course), method: :delete, class: 'badge badge-danger', data: {confirm: "Deleting course #{course.title}, are your sure?"} do %>
+                <%= fa_icon "trash-o"%>
+              <% end%>
+            </span>
+          </td>
+        </tr>
+      <% end %>
+    </tbody> 
+  </table>
+</div>
+
+<%= paginate @courses %>

@@ -7,3 +7,12 @@
 .category-form {
   width: 100%;
 }
+
+.course-manage {
+  display: none;
+  position: absolute;
+}
+
+tr:hover span.course-manage {
+  display: inline-block;
+}

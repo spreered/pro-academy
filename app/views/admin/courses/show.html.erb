@@ -1,7 +1,9 @@
 <div class="row justify-content-center mt-3">
   <div class="col-6">
     <button class="btn btn-primary btn-sm">edit</button>
-    <button class="btn btn-danger btn-sm">remove</button>
+    <%= link_to admin_course_path(@course), method: :delete, class: 'btn btn-danger btn-sm', data: {confirm: "Deleting course #{@course.title}, are your sure?"} do %>
+      <%= fa_icon "trash-o"%>
+    <% end%>
     <table class="table mt-2">
       <tbody>
         <tr>
@@ -35,6 +37,10 @@
         <tr>
           <th scope="row">Duration</td>
           <td><%= @course.duration %></td>
+        </tr>
+        <tr>
+          <th scope="row">Description</td>
+          <td><pre><%= @course.description %></pre></td>
         </tr>
       </tbody> 
     </table></div>

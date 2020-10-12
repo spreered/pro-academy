@@ -21,7 +21,9 @@
           <td>
             <span class="course-manage">
               <a class="badge badge-info"><%= fa_icon "file-text-o"%></a> 
-              <a class="badge badge-danger"><%= fa_icon "trash-o"%></a> 
+              <%= link_to admin_course_path(course), method: :delete, class: 'badge badge-danger', data: {confirm: "Deleting course #{course.title}, are your sure?"} do %>
+                <%= fa_icon "trash-o"%>
+              <% end%>
             </span>
           </td>
         </tr>

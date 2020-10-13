@@ -1,4 +1,5 @@
 class Admin::CategoriesController < Admin::BaseController 
+  before_action :find_category, only: [:edit, :update, :destroy]
   def index
     @categories = Category.all.order(id: :asc)
     @new_category = Category.new
@@ -11,23 +12,21 @@ class Admin::CategoriesController < Admin::BaseController
     end
   end
 
-  def edit
-    @category = Category.find(params[:id])
-  end
-
   def update
-    @category = Category.find(params[:id])
     unless @category.update(category_params)
       flash.now[:alert] = "Failed to update category, reason: #{@category.errors.full_messages}"
     end
   end
 
   def destroy
-    @category = Category.find(params[:id])
     @category.delete
   end
 
   private
+
+  def find_category
+    @category = Category.find(params[:id])
+  end
 
   def category_params
     params.require(:category).permit(:name)

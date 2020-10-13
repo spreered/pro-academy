@@ -42,6 +42,8 @@ gem 'jquery-rails', '~> 4.4'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
 gem 'kaminari', '~> 1.2', '>= 1.2.1'
 gem 'money-rails', '~> 1.13', '>= 1.13.3'
+gem 'grape', '~> 1.5'
+gem 'grape-entity', '~> 0.8.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

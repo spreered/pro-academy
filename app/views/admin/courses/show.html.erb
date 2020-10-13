@@ -26,7 +26,7 @@
         </tr>
         <tr>
           <th scope="row">Status</td>
-          <td><%= @course.status %></td>
+          <td><%= @course.status.humanize %></td>
         </tr>
         <tr>
           <th scope="row">Slug</td>
@@ -35,6 +35,10 @@
         <tr>
           <th scope="row">URL</td>
           <td><%= @course_root_url + @course.slug %></td>
+        </tr>
+        <tr>
+          <th scope="row">Price</td>
+          <td><%= price_with_currency @course.price %> </td>
         </tr>
         <tr>
           <th scope="row">Duration</td>

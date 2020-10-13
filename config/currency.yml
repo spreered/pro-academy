@@ -1,0 +1,15 @@
+production:
+  - 'USD' 
+  - 'TWD'
+  - 'MYR'
+  - 'HKD'
+development:
+  - 'USD' 
+  - 'TWD'
+  - 'MYR'
+  - 'HKD'
+test:
+  - 'USD' 
+  - 'TWD'
+  - 'MYR'
+  - 'HKD'

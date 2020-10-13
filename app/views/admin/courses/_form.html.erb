@@ -29,7 +29,7 @@
       <%= f.text_field :price, class: 'form-control', required: true%>
     </div>
     <div class="col-sm-4">
-      <%= f.select :price_currency, [ ['TWD', 'TWD'],['USD', 'USD'] ], {}, class: 'form-control'%>
+      <%= f.select :price_currency, Course::CURRENCIES.map{|c| [c, c]}, {}, class: 'form-control'%>
     </div>
   </div>
   <div class="form-group row">

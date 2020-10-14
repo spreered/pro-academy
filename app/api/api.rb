@@ -1,5 +1,5 @@
 class API < Grape::API
   prefix :api
   format :json
-  mount Courses::Base
+  mount Courses::V1
 end

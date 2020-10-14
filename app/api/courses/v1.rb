@@ -1,5 +1,5 @@
 module Courses
-  class Base < Grape::API
+  class V1 < Grape::API
     format :json
     version 'v1', using: :path
 

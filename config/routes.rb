@@ -6,4 +6,6 @@ Rails.application.routes.draw do
     root to: 'courses#index'
     resources :courses, :categories
   end
+
+  mount API => '/'
 end

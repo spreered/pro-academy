@@ -42,11 +42,15 @@ gem 'jquery-rails', '~> 4.4'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'
 gem 'kaminari', '~> 1.2', '>= 1.2.1'
 gem 'money-rails', '~> 1.13', '>= 1.13.3'
+gem 'grape', '~> 1.5'
+gem 'grape-entity', '~> 0.8.1'
+gem 'grape_on_rails_routes', '~> 0.3.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   # gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-rails'
+  gem 'factory_bot', '~> 6.1'
 end
 
 group :development do
@@ -63,8 +67,10 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
+  # gem 'chromedriver-helper'
   gem 'rspec-rails', '~> 4.0', '>= 4.0.1'
+  gem 'database_cleaner', '~> 1.8', '>= 1.8.5'
+  gem 'timecop', '~> 0.9.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

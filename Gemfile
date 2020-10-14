@@ -44,6 +44,7 @@ gem 'kaminari', '~> 1.2', '>= 1.2.1'
 gem 'money-rails', '~> 1.13', '>= 1.13.3'
 gem 'grape', '~> 1.5'
 gem 'grape-entity', '~> 0.8.1'
+gem 'grape_on_rails_routes', '~> 0.3.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

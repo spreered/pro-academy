@@ -21,4 +21,6 @@ class Order < ApplicationRecord
       transitions from: [:paid, :fulfilled], to: :cancelled
     end
   end
+
+  monetize :amount_cents
 end

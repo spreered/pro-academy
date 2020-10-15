@@ -14,4 +14,6 @@ class Payment < ApplicationRecord
       transitions from: :pending, to: :failed
     end
   end
+
+  monetize :amount_cents
 end

@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 2020_10_15_161140) do
     t.integer "state", null: false
     t.datetime "start_at"
     t.datetime "end_at"
+    t.integer "amount_cents", null: false
+    t.string "amount_currency", default: "NTD", null: false
     t.bigint "course_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -50,7 +52,7 @@ ActiveRecord::Schema.define(version: 2020_10_15_161140) do
 
   create_table "payments", force: :cascade do |t|
     t.integer "state", default: 0, null: false
-    t.integer "amount_cent", null: false
+    t.integer "amount_cents", null: false
     t.string "amount_currency", default: "NTD", null: false
     t.bigint "order_id"
     t.datetime "created_at", null: false

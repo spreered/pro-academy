@@ -15,6 +15,8 @@ Category.all.each do |category|
       title: "#{category.name} #{i}",
       status: :launched,
       slug: "#{category.name.downcase}-#{i}",
+      price: rand(100...1000),
+      duration: rand(1...31) 
     )
   end
 end

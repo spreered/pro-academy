@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_15_154144) do
+ActiveRecord::Schema.define(version: 2020_10_15_161140) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,16 @@ ActiveRecord::Schema.define(version: 2020_10_15_154144) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
+  create_table "payments", force: :cascade do |t|
+    t.integer "state", default: 0, null: false
+    t.integer "amount_cent", null: false
+    t.string "amount_currency", default: "NTD", null: false
+    t.bigint "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_payments_on_order_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -65,4 +75,7 @@ ActiveRecord::Schema.define(version: 2020_10_15_154144) do
   end
 
   add_foreign_key "courses", "categories"
+  add_foreign_key "orders", "courses"
+  add_foreign_key "orders", "users"
+  add_foreign_key "payments", "orders"
 end

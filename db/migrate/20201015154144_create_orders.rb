@@ -4,8 +4,8 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.integer :state, defult: 0, null: false
       t.datetime :start_at
       t.datetime :end_at
-      t.references :course
-      t.references :user
+      t.references :course, foreign_key: true
+      t.references :user, foreign_key: true
 
       t.timestamps
     end

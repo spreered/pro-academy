@@ -12,6 +12,8 @@ class User < ApplicationRecord
   def renew_access_token!
     regenerate_access_token
     update(access_token_expired_at: DateTime.now + 1.day)
+
+    access_token
   end 
 
   def access_token_expired?

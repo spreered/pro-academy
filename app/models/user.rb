@@ -8,6 +8,13 @@ class User < ApplicationRecord
 
   enum role: { normal: 0, admin: 1 }
 
+  def self.verify(access_token)
+    return if access_token.blank?
+
+    user = User.find_by(access_token: access_token)
+    user.try(:access_token_expired?) ? nil : user
+  end
+
 
   def renew_access_token!
     regenerate_access_token

@@ -1,5 +1,7 @@
 module Courses
   class V1 < Grape::API
+    helpers ::APIHelper::AuthenticationHelper
+    before { authenticate! }
     format :json
     version 'v1', using: :path
 

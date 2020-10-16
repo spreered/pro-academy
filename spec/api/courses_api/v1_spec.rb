@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Courses::V1 do
+describe CoursesAPI::V1 do
   let(:user) { create(:user, :with_valid_access_token) }
   let(:access_token) { user.access_token }
   let(:headers) do 

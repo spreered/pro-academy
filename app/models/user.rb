@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_secure_token :access_token
 
   has_many :orders
+  has_many :course_available_orders, ->{ course_available }, class_name: 'Order'
+  has_many :available_courses, through: :course_available_orders, source: :course
 
   enum role: { normal: 0, admin: 1 }
 

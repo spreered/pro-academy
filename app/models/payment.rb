@@ -16,4 +16,9 @@ class Payment < ApplicationRecord
   end
 
   monetize :amount_cents
+
+  def charge!
+    # @note: Impelement payment flow here 
+    succeed!
+  end
 end

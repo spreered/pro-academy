@@ -1,4 +1,4 @@
-module Courses
+module CoursesAPI
   class V1 < Grape::API
     helpers ::APIHelper::AuthenticationHelper
     before { authenticate! }

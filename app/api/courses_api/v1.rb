@@ -9,7 +9,7 @@ module CoursesAPI
       desc 'Get all courses'
       get do
         courses = Course.all
-        present courses 
+        present courses, with: Entities::CourseEntity
       end
 
       route_param :id do
@@ -17,7 +17,7 @@ module CoursesAPI
         post 'apply' do
           form = ::Orders::CheckoutForm.new(user: current_user, course_id: params[:id])
           if form.save!
-            present form.order
+            present form.order, with: Entities::OrderEntity
           else
             error!(form.errors.full_messages.join(''), 400)
           end

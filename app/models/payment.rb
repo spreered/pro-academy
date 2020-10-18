@@ -19,6 +19,7 @@ class Payment < ApplicationRecord
 
   def charge!
     # @note: Impelement payment flow here 
+    update(charged_at: DateTime.now)
     succeed!
   end
 end

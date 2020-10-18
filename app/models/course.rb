@@ -1,6 +1,7 @@
 class Course < ApplicationRecord
   CURRENCIES = Rails.configuration.supported_currencies
   belongs_to :category
+  has_many :orders
 
   validates :title, :slug, presence: true, uniqueness: { case_sensitive: false, message: 'has been taken'}
   validates :duration, inclusion: { in: (1..31) } 

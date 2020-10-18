@@ -12,6 +12,13 @@ module CoursesAPI
         present courses, with: Entities::CourseEntity
       end
 
+      format :json
+      desc 'List courses purchased by user'
+      get 'purchased' do
+        courses = current_user.available_courses.includes(:orders, :category)
+        present courses, with: Entities::UserCourseEntity, user: current_user
+      end
+
       route_param :id do
         desc 'Buy the course'
         post 'apply' do

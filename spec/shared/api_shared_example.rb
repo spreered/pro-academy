@@ -16,3 +16,8 @@ RSpec.shared_examples '200' do
   end
 end
 
+RSpec.shared_examples '201' do
+  it 'returns 201' do
+    expect(response.status).to eq(201)
+  end
+end

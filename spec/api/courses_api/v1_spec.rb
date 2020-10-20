@@ -10,6 +10,8 @@ describe CoursesAPI::V1 do
       'Authorization' => access_token
     }
   end
+  let(:category_a) { create(:category, name: 'Category A') }
+  let(:category_b) { create(:category, name: 'Category B') }
 
   before { create(:course) } 
   describe 'get v1/coures' do
@@ -32,7 +34,8 @@ describe CoursesAPI::V1 do
   end
 
   describe 'get v1/courses/purchased' do
-    let(:uri) { '/api/v1/courses/purchased' }
+    let(:uri) { "/api/v1/courses/purchased" + search_params }
+    let(:search_params) {""}
     before { get uri, headers: headers }
     context 'not login' do
       let(:headers) { { 'Content-Type' => 'application/json' } }
@@ -43,18 +46,17 @@ describe CoursesAPI::V1 do
     it_behaves_like '200'
 
     context 'when user purchased coures' do
-      let(:course_1) { create(:course, title: 'Course 1', duration: 1) }
+      let(:course_1) { create(:course, title: 'Course 1',category: category_a, duration: 1) }
       subject { user.purchased_courses }
       before do
         create(:order, :fulfilled, course: course_1, user: user)
         get uri, headers: headers
       end
-
+ 
       it { expect(body(response).count).to be 1 }
       it { expect(body(response).first['title']).to eq('Course 1') }
       it { expect(body(response).first.keys).to match_array(['title', 'category', 'description', 'slug', 'orders']) }
       it { expect(body(response).first['orders'].count).to be(1) }
-
       it 'containt history orders of this course' do
         order_info = body(response).first['orders'].first
 
@@ -63,13 +65,21 @@ describe CoursesAPI::V1 do
       end
 
       context 'when user buy another course' do
-        let(:course_2) { create(:course, title: 'Course 2', duration: 7) }
+        let(:course_2) { create(:course, title: 'Course 2', category: category_b, duration: 7) }
         before do
           create(:order, :fulfilled, course: course_2, user: user)
           get uri, headers: headers
         end 
         it { expect(body(response).count).to be 2 }
-        it { expect(body(response).map{|c| c['title']}).to match_array([ 'Course 1', 'Course 2']) }
+        it { expect(body(response).map{|c| c['title']}).to match_array(['Course 1', 'Course 2']) }
+
+        context 'with params ?category=category%20a' do
+          let(:search_params) { "?category=category%20a" }
+
+          it { expect(body(response).count).to be 1 }
+          it { expect(body(response).map{|c| c['title']}).to match_array(['Course 1']) }
+        end
+
 
         context 'when 1 course expired' do
           before do 
@@ -77,8 +87,26 @@ describe CoursesAPI::V1 do
             get uri, headers: headers
           end
           after { Timecop.return }
-          it { expect(body(response).count).to be 1 }
-          it { expect(body(response).map{|c| c['title']}).to match_array(['Course 2']) }
+          it { expect(body(response).count).to be 2 }
+          it { expect(body(response).map{|c| c['title']}).to match_array(['Course 1', 'Course 2']) }
+
+          context 'whit params ?available_only=true' do
+            let(:search_params) {"?available_only=true"}
+            before { get uri, headers: headers }
+            it { expect(body(response).count).to be 1 }
+            it { expect(body(response).map{|c| c['title']}).to match_array(['Course 2']) }
+          end
+          context 'whit params ?available_only=true&category=category%20b' do
+            let(:search_params) {"?available_only=true&category=category%20b"}
+            before { get uri, headers: headers }
+            it { expect(body(response).count).to be 1 }
+            it { expect(body(response).map{|c| c['title']}).to match_array(['Course 2']) }
+          end
+          context 'whit params ?available_only=true&category=category%20a' do
+            let(:search_params) {"?available_only=true&category=category%20a"}
+            before { get uri, headers: headers }
+            it { expect(body(response).count).to be 0 }
+          end
         end
       end
     end

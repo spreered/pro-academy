@@ -14,8 +14,12 @@ module CoursesAPI
 
       format :json
       desc 'List courses purchased by user'
+      params do
+        optional :available_only, type: String 
+        optional :category, type: String
+      end
       get 'purchased' do
-        courses = current_user.available_courses.includes(:category, :orders)
+        courses = UserCoursesQueryService.new(current_user, params).perform
         present courses, with: Entities::UserCourseEntity, user: current_user
       end
 

@@ -12,7 +12,7 @@ class APILogin < Grape::API
       if user.present? && user.valid_password?(params[:password])
         { access_token: user.renew_access_token!, expired_at: user.access_token_expired_at }
       else
-        error!({message: 'Authentication Failed'}, 401)
+        error!('Authentication Failed', 401)
       end
     end
   end

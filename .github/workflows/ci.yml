@@ -35,3 +35,7 @@ jobs:
           bundle exec rails db:create
           bundle exec rails db:migrate
           bundle exec rspec 
+      - name: Generate Code coverage report
+        uses: aki77/simplecov-report-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}

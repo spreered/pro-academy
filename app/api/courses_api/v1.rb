@@ -5,14 +5,12 @@ module CoursesAPI
     version 'v1', using: :path
 
     resource :courses do
-      format :json
       desc 'Get all courses'
       get do
         courses = Course.all
         present courses, with: Entities::CourseEntity
       end
 
-      format :json
       desc 'List courses purchased by user'
       params do
         optional :available_only, type: String 

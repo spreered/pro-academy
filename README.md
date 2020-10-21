@@ -1,24 +1,37 @@
-# README
+# ProAcademy
+This is a simple online course system demo.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Installation
 
-Things you may want to cover:
+make sure you have installed postgre sql
 
-* Ruby version
+```
+$ brew install postgresql
+$ brew services start postgresql
+```
 
-* System dependencies
+clone this repo
 
-* Configuration
+```
+$ git clone git@github.com:spreered/pro-academy.git
 
-* Database creation
+```
 
-* Database initialization
+prepared rails environment 
 
-* How to run the test suite
+```
+$ bundle install
+$ bundle exec rails db:create
+$ bundle exec rails db:migrate
 
-* Services (job queues, cache servers, search engines, etc.)
+# if you need seed data
+$ bundle exec rails db:seed
+```
 
-* Deployment instructions
+start the server
 
-* ...
+```
+$ bundle exec rails s
+```
+
+
